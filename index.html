@@ -1,363 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr Olugbenga Asaolu · ePortfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Olugbenga Asaolu | Public Health Data Scientist</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ─────────────────────────────
-       01 | DESIGN TOKENS
-    ───────────────────────────── */
-    :root{
-      --clr-primary:#0d47a1;          /* deep navy */
-      --clr-secondary:#1565c0;        /* blue accent */
-      --clr-bg:#ffffff;
-      --clr-text:#333333;
-      --clr-muted:#6b7280;
+    <style>
+      /* ===========================================================
+         GLOBAL DESIGN TOKENS
+         ---------------------------------------------------------*/
+      :root {
+        --clr-primary: #0d47a1; /* Navy */
+        --clr-secondary: #1976d2; /* Lighter blue accents */
+        --clr-bg: #ffffff;
+        --clr-text: #333333;
+        --clr-muted: #6b7280;
+        --clr-light-bg: #f8f8f8; /* For certificate section */
 
-      --radius-sm:.5rem;
-      --radius-md:1rem;
+        --radius-sm: 0.5rem;
+        --radius-md: 1rem;
+        --radius-lg: 1.5rem;
 
-      --shadow-sm:0 1px 3px rgba(0,0,0,.08);
-      --shadow-md:0 4px 8px rgba(0,0,0,.12);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-      --font-base:"Inter",sans-serif;
-    }
+        --font-base: "Inter", sans-serif;
+      }
 
-    /* ─────────────────────────────
-       02 | GLOBAL RESET
-    ───────────────────────────── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:var(--font-base);
-      line-height:1.6;
-      background:var(--clr-bg);
-      color:var(--clr-text);
-    }
-    a{color:var(--clr-primary);text-decoration:none;transition:color .2s}
-    a:hover{color:var(--clr-secondary)}
-    img{display:block;max-width:100%}
+      /* Base styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    .container{width:min(92%,1200px);margin-inline:auto}
+      body {
+        font-family: var(--font-base);
+        line-height: 1.6;
+        background-color: var(--clr-bg);
+        color: var(--clr-text);
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+      }
 
-    /* ─────────────────────────────
-       03 | NAVIGATION
-    ───────────────────────────── */
-    nav{
-      position:sticky;top:0;z-index:999;
-      background:#fff;
-      box-shadow:var(--shadow-sm);
-    }
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:2rem;
-      justify-content:center;
-      padding:1rem 0;
-      font-weight:600;
-    }
-    nav a{padding:.25rem 0}
-    nav a.active{border-bottom:2px solid var(--clr-secondary)}
+      a {
+        color: var(--clr-primary);
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+      }
+      a:hover {
+        color: var(--clr-secondary);
+      }
 
-    /* ─────────────────────────────
-       04 | HERO / ABOUT
-    ───────────────────────────── */
-    header{
-      background:linear-gradient(135deg,var(--clr-primary),var(--clr-secondary));
-      color:#fff;
-      padding:4rem 0 5rem;
-      clip-path:polygon(0 0,100% 0,100% 88%,0 100%);
-    }
-    .about{
-      display:flex;flex-wrap:wrap;gap:2rem;align-items:center
-    }
-    .avatar{
-      flex:0 0 160px;height:160px;border-radius:50%;
-      object-fit:cover;border:4px solid #fff;
-      box-shadow:var(--shadow-md);
-    }
-    h1{font-size:2rem;font-weight:700;margin-bottom:.5rem}
-    .sub{opacity:.85;margin-bottom:1rem}
-    .badge{
-      background:#34d399;padding:.25rem .55rem;border-radius:var(--radius-sm);
-      font-size:.75rem;font-weight:700;margin-left:.4rem
-    }
-    .logos{display:flex;gap:1rem;margin:1.25rem 0;flex-wrap:wrap}
-    .logos img{height:44px;filter:brightness(0) invert(1);opacity:.9}
-    .social a{display:inline-block;margin-right:1rem}
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-    /* ─────────────────────────────
-       05 | SECTION TITLES
-    ───────────────────────────── */
-    section{padding:4rem 0}
-    section h2{
-      text-align:center;font-size:1.75rem;
-      color:var(--clr-primary);margin-bottom:2rem
-    }
+      /* Utility classes */
+      .container {
+        width: min(90%, 1200px);
+        margin-inline: auto;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--clr-primary);
+        color: #ffffff;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.2s ease-in-out;
+      }
+      .btn:hover {
+        background: var(--clr-secondary);
+      }
 
-    /* ─────────────────────────────
-       06 | PROJECTS
-    ───────────────────────────── */
-    .year-group{margin-top:3rem}
-    .year-heading{
-      font-size:1.25rem;font-weight:700;color:var(--clr-secondary);
-      margin-bottom:1.2rem
-    }
-    .projects-grid{
-      display:grid;gap:2rem;
-      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    }
-    .card{
-      background:#fff;padding:1.5rem;border-radius:var(--radius-md);
-      box-shadow:var(--shadow-sm);
-      transition:transform .2s,box-shadow .2s
-    }
-    .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
-    .card h3{font-size:1.15rem;margin-bottom:.55rem;line-height:1.35}
-    .meta{font-size:.85rem;color:var(--clr-muted);margin-bottom:.6rem}
-    .card p{font-size:.925rem;color:var(--clr-text);margin-bottom:.9rem}
-    .chips{display:flex;flex-wrap:wrap;gap:.35rem}
-    .chip{
-      background:var(--clr-secondary);color:#fff;
-      padding:.25rem .65rem;font-size:.72rem;border-radius:var(--radius-sm)
-    }
+      /* Section Styling */
+      section {
+        padding: 4rem 0;
+      }
 
-    /* ─────────────────────────────
-       07 | CERTIFICATES
-    ───────────────────────────── */
-    .cert-grid{
-      display:grid;gap:2rem;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    }
-    .cert{
-      background:#fff;padding:1rem;border-radius:var(--radius-sm);
-      box-shadow:var(--shadow-sm);text-align:center
-    }
-    .cert object{width:100%;height:350px;border:none;border-radius:var(--radius-sm)}
-    .cert h4{font-size:1rem;margin:.8rem 0 .4rem}
+      section:not(:last-of-type) {
+        border-bottom: 1px solid #eeeeee; /* Subtle separator */
+      }
 
-    /* ─────────────────────────────
-       08 | CONTACT / FOOTER
-    ───────────────────────────── */
-    #contact .contact-box{
-      text-align:center;max-width:600px;margin-inline:auto
-    }
-    footer{
-      text-align:center;padding:2.5rem 0 3rem;
-      font-size:.875rem;color:var(--clr-muted)
-    }
+      h2 {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 2.5rem;
+        color: var(--clr-primary);
+      }
 
-    /* ─────────────────────────────
-       09 | RESPONSIVE
-    ───────────────────────────── */
-    @media(max-width:640px){
-      .about{flex-direction:column;text-align:center}
-      .avatar{width:120px;height:120px}
-      header{clip-path:none;padding-bottom:3rem}
-    }
-  </style>
-</head>
+      /* -----------------------------------------------------------
+         NAVIGATION BAR
+         ---------------------------------------------------------*/
+      .navbar {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+      }
 
-<body>
-  <!-- ───────── NAVBAR ───────── -->
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      .navbar .container {
+        display: flex;
+        justify-content: center; /* Center navigation items */
+        padding: 1rem 0;
+      }
 
-  <!-- ───────── ABOUT / HERO ───────── -->
-  <header id="about">
-    <div class="container about">
-      <img class="avatar" src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Gbenga%20Asaolu%20Serious%20Pose%201_May%202023.jpeg" alt="Dr Olugbenga Asaolu" />
+      .navbar-menu {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
 
-      <div>
-        <h1>Dr Olugbenga Asaolu <span class="badge">Verified</span></h1>
-        <p class="sub">Public Health Data Scientist · Data Science &amp; Generative AI (2025)</p>
+      .navbar-item a {
+        font-weight: 600;
+        color: var(--clr-text);
+        transition: color 0.2s ease-in-out;
+      }
 
-        <!-- Logos -->
-        <div class="logos">
-          <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/graph_courses_logo.png" alt="GRAPH logo" />
-          <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/accelebrate%20logo.png" alt="Accelebrate logo"/>
-          <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/dataleadafrica%20logo.png" alt="Data Lead Africa logo"/>
-        </div>
+      .navbar-item a:hover {
+        color: var(--clr-primary);
+      }
 
-        <!-- Social -->
-        <div class="social">
-          <a href="https://www.linkedin.com/in/dr-olugbenga-asaolu/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/gbengasaolu" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://thegraphcourses.org/" class="button" target="_blank" rel="noopener">About Program</a>
-        </div>
-      </div>
-    </div>
-  </header>
+      /* -----------------------------------------------------------
+         HEADER / HERO SECTION
+         ---------------------------------------------------------*/
+      header.hero {
+        background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
+        color: #ffffff;
+        padding: 3rem 0 4rem;
+        clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); /* Adjusted clip-path for cleaner look */
+      }
 
-  <!-- ───────── PROJECTS ───────── -->
-  <section id="projects">
-    <h2>Major Projects</h2>
-    <div class="container">
+      .hero .avatar {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: var(--shadow-md);
+        border: 4px solid #ffffff;
+      }
 
-      <!-- 2025 GROUP -->
-      <div class="year-group">
-        <h3 class="year-heading">2025</h3>
-        <div class="projects-grid">
+      .intro h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .intro p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+      }
 
-          <!-- GenAI Showcase -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/website/" target="_blank" rel="noopener">GenAI Web Showcase</a></h3>
-            <div class="meta">April 2025</div>
-            <p>Interactive demo site highlighting generative-AI applications for rapid public-health reporting and data storytelling.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">LLM</span><span class="chip">GitHub Pages</span>
-            </div>
-          </article>
+      .badge {
+        display: inline-block;
+        background: #34d399; /* emerald */
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--radius-sm);
+        margin-left: 0.5rem;
+      }
 
-          <!-- Motorcycle Deaths -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/Motorcycle_Accident_Deaths_in_Colombia/" target="_blank" rel="noopener">Motorcycle Deaths in Colombia</a></h3>
-            <div class="meta">February 2025</div>
-            <p>Analyzed 10-year fatality trends and built an interactive dashboard to guide Colombia’s road-safety interventions.</p>
-            <div class="chips">
-              <span class="chip">R</span><span class="chip">Shiny</span><span class="chip">ggplot2</span><span class="chip">Public Data</span>
-            </div>
-          </article>
-        </div>
-      </div>
+      .logos {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .logos img {
+        height: 45px;
+        filter: brightness(0) invert(1);
+        opacity: 0.9;
+      }
 
-      <!-- 2024 GROUP -->
-      <div class="year-group">
-        <h3 class="year-heading">2024</h3>
-        <div class="projects-grid">
+      /* Skills (Chips) */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: #ffffff;
+        padding: 0.25rem 0.75rem;
+        border-radius: var(--radius-lg);
+        font-size: 0.8rem;
+        white-space: nowrap; /* Prevent chips from breaking */
+      }
 
-          <!-- Gapminder 2007 -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/gapminder_2007/gapminder_2007#home" target="_blank" rel="noopener">Gapminder 2007 Dashboard</a></h3>
-            <div class="meta">December 2024</div>
-            <p>Visual exploration of global health &amp; economic indicators for 2007 using interactive filters and bubble charts.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Plotly Dash</span><span class="chip">EDA</span>
-            </div>
-          </article>
+      /* -----------------------------------------------------------
+         ABOUT SECTION
+         ---------------------------------------------------------*/
+      #about {
+        padding: 4rem 0;
+        text-align: center;
+      }
+      #about h2 {
+        margin-bottom: 1.5rem;
+      }
+      #about p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        color: var(--clr-muted);
+      }
 
-          <!-- CO2 Emissions -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/co2_emissions_demo/" target="_blank" rel="noopener">CO₂ Emissions Dashboard</a></h3>
-            <div class="meta">October 2024</div>
-            <p>Built a global CO₂-emission explorer with choropleth maps and trend analytics to evaluate climate-policy impact.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Dash</span><span class="chip">Climate Data</span>
-            </div>
-          </article>
+      /* -----------------------------------------------------------
+         PROJECTS SECTION
+         ---------------------------------------------------------*/
+      #projects {
+        padding: 4rem 0;
+        background-color: var(--clr-light-bg);
+      }
 
-          <!-- Global HIV/AIDS -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/GLOBAL_HIV_AIDS_ANALYSIS/" target="_blank" rel="noopener">Global HIV/AIDS Analysis</a></h3>
-            <div class="meta">August 2024</div>
-            <p>Integrated UNAIDS &amp; World Bank datasets to profile epidemic trends and forecast ART coverage gaps through 2030.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Machine Learning</span>
-            </div>
-          </article>
+      .projects-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
 
-          <!-- Life Expectancy vs GDP -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/Gapminder_lifeexp_gdp/dahboard_final#home" target="_blank" rel="noopener">Life Expectancy vs GDP</a></h3>
-            <div class="meta">May 2024</div>
-            <p>Interactive motion charts showing the relationship between economic growth and longevity across 180 countries.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Gapminder</span><span class="chip">Plotly</span>
-            </div>
-          </article>
-
-          <!-- US Mortality Surveillance -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/dsu_wkds_analysis/#home" target="_blank" rel="noopener">US Mortality Surveillance</a></h3>
-            <div class="meta">March 2024</div>
-            <p>Automated CDC WEEKLY dataset ingestion and built dashboards to track excess-mortality signals in real time.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Dash</span><span class="chip">Time-Series</span>
-            </div>
-          </article>
-
-          <!-- China Flu 2013 -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/chinaflu2013/" target="_blank" rel="noopener">China Flu Analysis (2013)</a></h3>
-            <div class="meta">January 2024</div>
-            <p>Retrospective H7N9 outbreak analysis covering provincial spread, CFR estimates, and interactive heat maps.</p>
-            <div class="chips">
-              <span class="chip">R</span><span class="chip">ggplot2</span><span class="chip">Leaflet</span>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- 2023 GROUP -->
-      <div class="year-group">
-        <h3 class="year-heading">2023</h3>
-        <div class="projects-grid">
-
-          <!-- Happiness Analysis -->
-          <article class="card">
-            <h3><a href="https://gbengasaolu.github.io/rmc_life_satisfaction_webpage_gb/" target="_blank" rel="noopener">Happiness Trends 2011-2023</a></h3>
-            <div class="meta">December 2023</div>
-            <p>Comparative study of global life-satisfaction scores across 12 years with drill-down by region and income level.</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">Seaborn</span><span class="chip">EDA</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───────── CERTIFICATES ───────── -->
-  <section id="certificates">
-    <h2>Professional Certificates</h2>
-    <div class="container cert-grid">
-
-      <article class="cert">
-        <object data="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Big%20Data%20Analysis%20Certification_Dr%20Asaolu.pdf" type="application/pdf"></object>
-        <h4>Big Data Analysis – Data Lead Africa</h4>
-      </article>
-
-      <article class="cert">
-        <object data="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Certificate-EDA-R-Olugbenga-Asaolu-153587.pdf" type="application/pdf"></object>
-        <h4>Exploratory Data Analysis with R – Accelebrate</h4>
-      </article>
-
-      <article class="cert">
-        <object data="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Certificate_ML_DV_Asaolu-156716.pdf" type="application/pdf"></object>
-        <h4>Machine Learning &amp; Data Viz – Accelebrate</h4>
-      </article>
-
-      <article class="cert">
-        <object data="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/gbengasaolu_Python_Certificate%20(1).pdf" type="application/pdf"></object>
-        <h4>Python for Data Analysis – GRAPH Network</h4>
-      </article>
-    </div>
-  </section>
-
-  <!-- ───────── CONTACT ───────── -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="container contact-box">
-      <p>Have a collaboration in mind? Let's talk.</p>
-      <p><strong>Email:</strong> <a href="mailto:gbengastephen663@gmail.com">gbengastephen663@gmail.com</a></p>
-    </div>
-  </section>
-
-  <!-- ───────── FOOTER ───────── -->
-  <footer>
-    © 2025 Dr Olugbenga Asaolu &nbsp;|&nbsp; Built with HTML &amp; CSS
-  </footer>
-</body>
-</html>
+      .project-card {
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+      }
+      .project-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .project-card h3 a {
+        color: var(--clr-primary);
+      }
+      .project-card h3 a:hover {
+        color: var(--clr-secondary);
+      }
+      .project-card

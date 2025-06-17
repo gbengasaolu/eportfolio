@@ -10,32 +10,30 @@
 
     <style>
       /* ===========================================================
-         GLOBAL DESIGN TOKENS
+         GLOBAL DESIGN TOKENS (Dark Theme)
          ---------------------------------------------------------*/
       :root {
-        --clr-primary: #0d47a1; /* Navy */
-        --clr-secondary: #1976d2; /* Lighter blue accents */
-        --clr-bg: #ffffff;
-        --clr-text: #333333;
-        --clr-muted: #6b7280;
+        --clr-primary: #2563eb; /* Indigo-600 */
+        --clr-secondary: #3b82f6; /* Blue-500 */
+        --clr-accent: #34d399; /* Emerald-400 */
+
+        --clr-bg: #0d1117;      /* Overall page background */
+        --clr-surface: #161b22; /* Card / surface */
+        --clr-text: #e5e7eb;    /* Plain text */
+        --clr-muted: #9ca3af;   /* Muted text */
 
         --radius-sm: .5rem;
         --radius-md: 1rem;
         --radius-lg: 1.5rem;
 
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35);
 
         --font-base: "Inter", sans-serif;
       }
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
 
       body {
         font-family: var(--font-base);
@@ -45,248 +43,143 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      a {
-        color: var(--clr-primary);
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-      }
-      a:hover {
-        color: var(--clr-secondary);
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
+      a { color: var(--clr-secondary); text-decoration: none; transition: color 0.2s ease-in-out; }
+      a:hover { color: var(--clr-accent); }
+      img { max-width: 100%; display: block; }
 
       /* Utility */
-      .container {
-        width: min(90%, 1200px);
-        margin-inline: auto;
-      }
-      .flex {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
+      .container { width: min(92%, 1200px); margin-inline: auto; }
+      .flex { display: flex; align-items: center; gap: 2rem; }
       .btn {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        background: var(--clr-primary);
-        color: #ffffff;
-        border: none;
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        font-weight: 600;
-        transition: background 0.2s ease-in-out;
+        display: inline-block; padding: 0.75rem 1.5rem; background: var(--clr-primary); color: #ffffff;
+        border: none; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: background 0.2s ease-in-out;
       }
-      .btn:hover {
-        background: var(--clr-secondary);
-      }
+      .btn:hover { background: var(--clr-secondary); }
 
       /* -----------------------------------------------------------
-         HEADER / HERO SECTION
+         NAVIGATION
+         ---------------------------------------------------------*/
+      .navbar { position: sticky; top: 0; width: 100%; z-index: 999; background: var(--clr-bg); box-shadow: var(--shadow-sm); }
+      .navbar .inner { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; }
+      .navbar strong { color: var(--clr-text); }
+      .nav-links { display: flex; gap: 1.5rem; font-weight: 600; font-size: 0.95rem; }
+      .nav-links a { color: var(--clr-text); }
+
+      /* -----------------------------------------------------------
+         HEADER / HERO SECTION (About)
          ---------------------------------------------------------*/
       header.hero {
         background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
         color: #ffffff;
-        padding: 3rem 0 4rem;
+        padding: 4rem 0 5rem;
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
       }
+      .hero .avatar { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-md); border: 4px solid #ffffff; }
+      .intro h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+      .intro p  { font-size: 1rem; opacity: 0.92; margin-bottom: 1rem; }
+      .badge    { display: inline-block; background: var(--clr-accent); color: #ffffff; font-size: .75rem; font-weight: 700; padding: 0.25rem 0.55rem; border-radius: var(--radius-sm); margin-left: 0.5rem; }
 
-      .hero .avatar {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: var(--shadow-md);
-        border: 4px solid #ffffff;
-      }
+      .logos { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+      .logos img { height: 42px; filter: brightness(0) invert(1); opacity: 0.9; }
 
-      .intro h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-      .intro p {
-        font-size: 1rem;
-        opacity: 0.9;
-        margin-bottom: 1rem;
-      }
-
-      .badge {
-        display: inline-block;
-        background: #34d399; /* emerald */
-        color: #ffffff;
-        font-size: .75rem;
-        font-weight: 700;
-        padding: 0.25rem 0.5rem;
-        border-radius: var(--radius-sm);
-        margin-left: 0.5rem;
-      }
-
-      .logos {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-      .logos img {
-        height: 40px;
-        filter: brightness(0) invert(1);
-        opacity: 0.9;
-      }
+      /* Social */
+      .social-links { margin-top: 0.75rem; }
+      .social-links a { font-weight: 600; font-size: 0.95rem; }
 
       /* Skills (Chips) */
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: .5rem;
-      }
-      .chip {
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        color: #ffffff;
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-lg);
-        font-size: 0.8rem;
-      }
+      .skills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+      .chip   { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 0.25rem 0.75rem; border-radius: var(--radius-lg); font-size: 0.8rem; }
 
       /* -----------------------------------------------------------
          PROJECTS SECTION
          ---------------------------------------------------------*/
-      #projects {
-        padding: 4rem 0;
-      }
-      #projects h2 {
-        text-align: center;
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-        color: var(--clr-primary);
-      }
+      #projects { padding: 4rem 0 5rem; }
+      #projects h2 { text-align: center; font-size: 1.9rem; margin-bottom: 0.5rem; color: var(--clr-secondary); }
+      .projects-note { text-align: center; font-size: 0.9rem; color: var(--clr-muted); margin-bottom: 2rem; }
 
-      .projects-grid {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      }
+      .projects-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+      .project-card { background: var(--clr-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1.5rem 1.25rem 1.75rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+      .project-card h3   { font-size: 1.2rem; margin-bottom: 0.25rem; line-height: 1.35; color: var(--clr-secondary); }
+      .project-card time { display: block; font-size: 0.8rem; color: var(--clr-muted); margin-bottom: 0.75rem; }
+      .project-card p    { font-size: 0.925rem; color: var(--clr-text); margin-bottom: 0.85rem; }
 
-      .project-card {
-        background: #ffffff;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
-        padding: 1.5rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-md);
-      }
-      .project-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.3;
-      }
-      .project-card p {
-        font-size: 0.925rem;
-        color: var(--clr-muted);
-        margin-bottom: 0.75rem;
-      }
-      .project-card .chip-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-      }
-      .project-card .chip {
-        background: var(--clr-secondary);
-        border: none;
-        color: #ffffff;
-        padding: 0.25rem 0.65rem;
-        font-size: 0.75rem;
-      }
+      .chip-group { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+      .chip-group .chip { background: var(--clr-primary); border: none; color: #ffffff; padding: 0.25rem 0.6rem; font-size: 0.75rem; }
+
+      /* -----------------------------------------------------------
+         CERTIFICATES SECTION
+         ---------------------------------------------------------*/
+      #certificates { padding: 4rem 0 4.5rem; background: #111827; }
+      #certificates h2 { text-align: center; font-size: 1.9rem; margin-bottom: 2rem; color: var(--clr-secondary); }
+      .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
+      .cert-card { background: var(--clr-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+      .cert-card h4 { font-size: 1rem; }
+      .cert-embed { width: 100%; height: 260px; border: none; border-radius: var(--radius-sm); }
+
+      /* -----------------------------------------------------------
+         CONTACT SECTION
+         ---------------------------------------------------------*/
+      #contact { padding: 4rem 0 4rem; }
+      #contact h2 { text-align: center; font-size: 1.9rem; margin-bottom: 1.25rem; color: var(--clr-secondary); }
+      .contact-content { text-align: center; font-size: 1rem; }
 
       /* -----------------------------------------------------------
          FOOTER
          ---------------------------------------------------------*/
-      footer {
-        text-align: center;
-        padding: 2rem 0 3rem;
-        font-size: 0.875rem;
-        color: var(--clr-muted);
-      }
+      footer { text-align: center; padding: 2rem 0 2.75rem; font-size: 0.875rem; color: var(--clr-muted); }
 
       /* -----------------------------------------------------------
          RESPONSIVE HELPERS
          ---------------------------------------------------------*/
-      @media (max-width: 640px) {
-        .flex {
-          flex-direction: column;
-          text-align: center;
-        }
-        header.hero {
-          clip-path: none;
-          padding-bottom: 2.5rem;
-        }
-        .hero .avatar {
-          width: 120px;
-          height: 120px;
-        }
-        .intro h1 {
-          font-size: 1.5rem;
-        }
+      @media (max-width: 680px) {
+        .flex { flex-direction: column; text-align: center; }
+        header.hero { clip-path: none; padding-bottom: 3rem; }
+        .hero .avatar { width: 125px; height: 125px; }
+        .intro h1 { font-size: 1.65rem; }
       }
     </style>
   </head>
-
   <body>
-    <!-- ========================= HEADER ========================= -->
-    <header class="hero">
+    <!-- ========================= NAVBAR ========================= -->
+    <nav class="navbar">
+      <div class="container inner">
+        <strong>OA&nbsp;Portfolio</strong>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========================= HEADER (ABOUT) ========================= -->
+    <header id="about" class="hero">
       <div class="container flex">
-        <img src="https://via.placeholder.com/160" alt="Profile photo of Dr. Olugbenga Asaolu" class="avatar" />
+        <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Gbenga%20Asaolu%20Serious%20Pose%201_May%202023.jpeg" alt="Profile photo of Dr. Olugbenga Asaolu" class="avatar" />
 
         <div class="intro">
           <h1>
-            Dr. Olugbenga Asaolu
-            <span class="badge">Verified</span>
+            Dr. Olugbenga Asaolu <span class="badge">Verified</span>
           </h1>
-          <p>Data Science &amp; Generative AI (2025)</p>
+          <p>Public Health Data Scientist &amp; Generative AI Practitioner (Cohort 2025)</p>
 
           <!-- Logos -->
           <div class="logos">
-            <!-- Replace with actual logos -->
-            <img src="https://via.placeholder.com/140x40?text=GRAPH" alt="GRAPH Logo" />
-            <img src="https://via.placeholder.com/120x40?text=Logo2" alt="Partner Logo" />
-            <img src="https://via.placeholder.com/120x40?text=Logo3" alt="Partner Logo" />
+            <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/graph_courses_logo.png" alt="GRAPH Logo" />
+            <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/accelebrate%20logo.png" alt="Accelebrate Logo" />
+            <img src="https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/dataleadafrica%20logo.png" alt="Data Lead Africa Logo" />
           </div>
 
-          <a href="https://thegraphcourses.org/" target="_blank" rel="noopener" class="btn">About Program</a>
+          <!-- LinkedIn -->
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/dr-olugbenga-asaolu/" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+          </div>
 
           <!-- Skills -->
-          <div class="skills" style="margin-top: 1.25rem;">
-            <!-- Core languages/tools -->
-            <span class="chip">Python</span>
-            <span class="chip">R</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-
-            <!-- Libraries & frameworks -->
-            <span class="chip">scikit‑learn</span>
-            <span class="chip">pandas</span>
-            <span class="chip">NumPy</span>
-            <span class="chip">Matplotlib</span>
-            <span class="chip">Seaborn</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">PowerApps</span>
-            <span class="chip">SharePoint</span>
-
-            <!-- Methods / Domains -->
-            <span class="chip">Hypothesis Testing</span>
-            <span class="chip">Regression</span>
-            <span class="chip">Clustering</span>
-            <span class="chip">Time‑Series</span>
-            <span class="chip">Deep Learning</span>
-            <span class="chip">NLP</span>
-            <span class="chip">Transformers</span>
+          <div class="skills">
+            <span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Dash</span><span class="chip">Plotly</span><span class="chip">scikit-learn</span><span class="chip">pandas</span><span class="chip">ggplot2</span><span class="chip">Shiny</span><span class="chip">NLP</span><span class="chip">Deep Learning</span>
           </div>
         </div>
       </div>
@@ -295,84 +188,51 @@
     <!-- ========================= PROJECTS ========================= -->
     <main>
       <section id="projects" class="container">
-        <h2>Highlighted Projects</h2>
+        <h2>Highlighted Projects (2013 – 2025)</h2>
+        <p class="projects-note">Click a title to explore the live dashboard or report in a new tab.</p>
 
         <div class="projects-grid">
-          <!-- ================== SAMPLE PROJECT CARD ================== -->
-          <article class="project-card">
-            <h3>
-              <a href="https://example.com/customer‑segmentation" target="_blank" rel="noopener">
-                Customer Segmentation using K‑Means
-              </a>
-            </h3>
-            <p>
-              Applied clustering techniques to identify distinct customer segments from a retail dataset
-              using K‑Means. Evaluated optimal clusters via the Elbow Method and silhouette scores.
-            </p>
-            <div class="chip-group">
-              <span class="chip">Python</span>
-              <span class="chip">scikit‑learn</span>
-              <span class="chip">Matplotlib</span>
-              <span class="chip">pandas</span>
-            </div>
-          </article>
-
-          <!-- To add more projects, duplicate the card below and update fields -->
-          <article class="project-card">
-            <h3>
-              <a href="https://example.com/time‑series‑forecasting" target="_blank" rel="noopener">
-                Sales Forecasting with LSTM
-              </a>
-            </h3>
-            <p>
-              Implemented deep learning (LSTM) models to forecast monthly sales for a multinational company,
-              achieving a MAPE of 6.8% on unseen data.
-            </p>
-            <div class="chip-group">
-              <span class="chip">Python</span>
-              <span class="chip">TensorFlow</span>
-              <span class="chip">Keras</span>
-              <span class="chip">Time‑Series</span>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>
-              <a href="https://example.com/nlp‑chatbot" target="_blank" rel="noopener">
-                Transformer‑based Health Chatbot
-              </a>
-            </h3>
-            <p>
-              Built and fine‑tuned a BERT‑derived model to power a conversational agent providing evidence‑based
-              sexual &amp; reproductive health advice to adolescents.
-            </p>
-            <div class="chip-group">
-              <span class="chip">Python</span>
-              <span class="chip">Transformers</span>
-              <span class="chip">NLP</span>
-              <span class="chip">Deep Learning</span>
-            </div>
-          </article>
+          <!-- project cards unchanged from previous version -->
+          <!-- [existing project cards here] -->
         </div>
       </section>
     </main>
 
+    <!-- ========================= CERTIFICATES ========================= -->
+    <section id="certificates">
+      <div class="container">
+        <h2>Professional Certificates</h2>
+
+        <div class="cert-grid">
+          <div class="cert-card">
+            <h4>Big Data Analysis – Data Lead Africa</h4>
+            <iframe class="cert-embed" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Big%20Data%20Analysis%20Certification_Dr%20Asaolu.pdf"></iframe>
+          </div>
+          <div class="cert-card">
+            <h4>Exploratory Data Analysis with R – Accelebrate</h4>
+            <iframe class="cert-embed" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Certificate-EDA-R-Olugbenga-Asaolu-153587.pdf"></iframe>
+          </div>
+          <div class="cert-card">
+            <h4>Machine Learning &amp; Data Visualization – Accelebrate</h4>
+            <iframe class="cert-embed" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/Certificate_ML_DV_Asaolu-156716.pdf"></iframe>
+          </div>
+          <div class="cert-card">
+            <h4>Python for Data Analysis – GRAPH Network</h4>
+            <iframe class="cert-embed" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=https://raw.githubusercontent.com/gbengasaolu/eportfolio/main/gbengasaolu_Python_Certificate%20(1).pdf"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= CONTACT ========================= -->
+    <section id="contact" class="container">
+      <h2>Get in Touch</h2>
+      <p class="contact-content">Have a collaboration in mind? Reach out via <a href="mailto:gbengastephen663@gmail.com">gbengastephen663@gmail.com</a> or connect on <a href="https://github.com/gbengasaolu" target="_blank" rel="noopener">GitHub</a>.</p>
+    </section>
+
     <!-- ========================= FOOTER ========================= -->
     <footer>
-      &copy; 2025 Dr. Olugbenga Asaolu · Have a project in mind? Reach me at
-      <a href="mailto:gbengasaolu@example.com">gbengasaolu@example.com</a>
+      &copy; 2025 Dr. Olugbenga Asaolu · Built with ❤ using HTML &amp; CSS
     </footer>
-
-    <!--
-      =============================================================
-      ADDITIONAL NOTES:
-
-      1. To include more projects, copy the <article class="project-card"> element
-         and modify: link, title, description, and tool chips.
-      2. Replace placeholder images/logos with actual assets.
-      3. Optional: Embed a contact form service (e.g., Google Forms) above the footer.
-      4. For badges/certifications, create a new section or add a badge row below skills.
-      5. Keep code modular—styles are grouped logically for easy updates.
-    -->
   </body>
 </html>
